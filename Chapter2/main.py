@@ -24,7 +24,7 @@ def main():
     plt.suptitle("")  # Remove the default subtitle
     plt.xlabel("Private")
     plt.ylabel("Outstate")
-    plt.show()
+    # plt.show()
     college['Elite'] = pd.cut(college['Top10perc'],
                               [0, 50, 100],
                               labels=['No', 'Yes'])
@@ -35,6 +35,29 @@ def main():
     plt.suptitle("")  # Remove the default subtitle
     plt.xlabel("Elite")
     plt.ylabel("Outstate")
+    # plt.show()
+
+    # create histograms in a 2x2 grid for different quantitative variables
+    fig, axes = plt.subplots(2, 2)
+
+    # Plot histogram for 'Apps' with 20 bins
+    college['Apps'].hist(bins=20, ax=axes[0, 0])
+    axes[0, 0].set_title("Histogram of Apps (20 bins)")
+
+    # Plot histogram for 'Top10perc' with 15 bins
+    college['Top10perc'].hist(bins=15, ax=axes[0, 1])
+    axes[0, 1].set_title("Histogram of Top10perc (15 bins)")
+
+    # Plot histogram for 'Enroll' with 10 bins
+    college['Enroll'].hist(bins=10, ax=axes[1, 0])
+    axes[1, 0].set_title("Histogram of Enroll (10 bins)")
+
+    # Plot histogram for 'Room.Board' with 25 bins
+    college['Room.Board'].hist(bins=25, ax=axes[1, 1])
+    axes[1, 1].set_title("Histogram of Room.Board (25 bins)")
+
+    # Adjust layout to avoid overlapping labels
+    plt.tight_layout()
     plt.show()
 
 
