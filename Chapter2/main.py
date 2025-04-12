@@ -16,7 +16,7 @@ def main():
     # print(college.describe())
 
     pd.plotting.scatter_matrix(college[["Top10perc", "Apps", "Enroll"]])
-    plt.show()
+    # plt.show()
 
     # Out-state students based on private or not.
     college.boxplot(column="Outstate", by="Private")
@@ -25,6 +25,18 @@ def main():
     plt.xlabel("Private")
     plt.ylabel("Outstate")
     plt.show()
+    college['Elite'] = pd.cut(college['Top10perc'],
+                              [0, 50, 100],
+                              labels=['No', 'Yes'])
+    print(college['Elite'].value_counts())
+    # Out-state students based on private or not.
+    college.boxplot(column="Outstate", by="Elite")
+    plt.title("Outstate vs Elite")
+    plt.suptitle("")  # Remove the default subtitle
+    plt.xlabel("Elite")
+    plt.ylabel("Outstate")
+    plt.show()
+
 
 # Function only called when ran directly, not on import
 if __name__ == '__main__':
