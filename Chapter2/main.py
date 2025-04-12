@@ -1,6 +1,7 @@
 import matplotlib
 import pandas as pd
 import matplotlib.pyplot as plt
+from pandas.plotting import boxplot
 
 
 def main():
@@ -17,6 +18,13 @@ def main():
     pd.plotting.scatter_matrix(college[["Top10perc", "Apps", "Enroll"]])
     plt.show()
 
+    # Out-state students based on private or not.
+    college.boxplot(column="Outstate", by="Private")
+    plt.title("Outstate vs Private")
+    plt.suptitle("")  # Remove the default subtitle
+    plt.xlabel("Private")
+    plt.ylabel("Outstate")
+    plt.show()
 
 # Function only called when ran directly, not on import
 if __name__ == '__main__':
