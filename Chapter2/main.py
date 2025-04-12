@@ -1,6 +1,6 @@
-from pydoc import describe
-
+import matplotlib
 import pandas as pd
+import matplotlib.pyplot as plt
 
 
 def main():
@@ -11,8 +11,11 @@ def main():
     college3 = college.rename({'Unnamed: 0': 'College'}, axis=1)
     college3 = college3.set_index('College')
     college = college3
-    print(college.head(10))
-    print(college.describe())
+    # print(college.head(10))
+    # print(college.describe())
+
+    pd.plotting.scatter_matrix(college[["Top10perc", "Apps", "Enroll"]])
+    plt.show()
 
 
 # Function only called when ran directly, not on import
